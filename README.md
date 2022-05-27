@@ -11,3 +11,8 @@ The Client is really simple, it connects to the server, sends the device hostnam
 ### Bot
 I wrote the command system like most Minecraft Clients, you have a `Command` class, you create a new class that extends the `Command` class, 
 it has a simple `super()` function / initiator and a `onCommand` function which is where the code for commands is.
+
+
+<br><br>
+
+[javadoc](https://github.com/TerrificTable/SimpleJavaCNC/tree/master/javadoc)
