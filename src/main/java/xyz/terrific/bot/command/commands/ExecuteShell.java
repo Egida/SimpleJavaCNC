@@ -5,6 +5,11 @@ import xyz.terrific.bot.command.Command;
 
 import java.io.IOException;
 
+
+/**
+ * @author TerrificTable55
+ * @version 1.0
+ */
 public class ExecuteShell extends Command {
     public ExecuteShell() {
         super("sh", "Execute Shell Commands");

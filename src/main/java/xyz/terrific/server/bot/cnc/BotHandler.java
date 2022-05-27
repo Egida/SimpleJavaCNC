@@ -7,6 +7,11 @@ import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.util.ArrayList;
 
+
+/**
+ * @author TerrificTable55
+ * @version 1.0
+ */
 public class BotHandler implements Runnable {
     public static ArrayList<BotHandler> handlers = new ArrayList<>();
 
@@ -16,6 +21,10 @@ public class BotHandler implements Runnable {
     public BufferedWriter   writer;
 
 
+    /**
+     * @use Initialize the BotHandler, defines writer and reader, sets socket
+     * @param socket used to connect to server
+     */
     public BotHandler(Socket socket) {
         try {
 
@@ -32,6 +41,9 @@ public class BotHandler implements Runnable {
         }
     }
 
+    /**
+     * @use `run` function from Runnable interface
+     */
     @Override
     public void run() {
         String message;
@@ -53,6 +65,10 @@ public class BotHandler implements Runnable {
 
     }
 
+    /**
+     * @param botName send command to bot with this name
+     * @param command the command that will be sent to the bot
+     */
     public static void send(String botName, String command) {
         for (BotHandler handler : handlers) {
             try {
@@ -69,6 +85,9 @@ public class BotHandler implements Runnable {
         }
     }
 
+    /**
+     * @param message the command / message that will be sent to all bots
+     */
     public void sendAll(String message) {
         for (BotHandler handler : handlers) {
             try {
@@ -86,11 +105,19 @@ public class BotHandler implements Runnable {
         }
     }
 
+    /**
+     * @use Removes the Handler from the handlers list
+     */
     public void removeHandler() {
         handlers.remove(this);
         System.out.printf(" [ BOT | %s ]  Closed Connection\n", this.name);
     }
 
+    /**
+     * @param socket closes socket
+     * @param reader closes reader
+     * @param writer closes writer
+     */
     public void close(Socket socket, BufferedReader reader, BufferedWriter writer) {
         removeHandler();
         try {

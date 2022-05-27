@@ -5,9 +5,17 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+
+/**
+ * @author TerrificTable55
+ * @version 1.0
+ */
 public class ClientServer {
     private final ServerSocket socket;
 
+    /**
+     * @param socket sets private socket variable
+     */
     public ClientServer(ServerSocket socket) {
         this.socket = socket;
     }
@@ -20,6 +28,9 @@ public class ClientServer {
 
     }
 
+    /**
+     * @use start function
+     */
     public void start() {
         try {
             while (!socket.isClosed()) {
@@ -39,6 +50,9 @@ public class ClientServer {
 
     }
 
+    /**
+     * @use closes socket
+     */
     public void close() {
 
         try {

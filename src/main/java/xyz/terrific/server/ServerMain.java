@@ -5,8 +5,17 @@ import xyz.terrific.server.client.cnc.ClientServer;
 
 import java.io.IOException;
 
+
+/**
+ * @author TerrificTable55
+ * @version 1.0
+ */
 public class ServerMain {
 
+    /**
+     * @use Creates a new BotServer and a new ClientServer
+     * @param args
+     */
     public static void main(String[] args) {
 
         new Thread(() -> {

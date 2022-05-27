@@ -8,6 +8,11 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
 
+
+/**
+ * @author TerrificTable55
+ * @version 1.0
+ */
 public class Bot {
     public static ArrayList<Bot> bots = new ArrayList<>();
 
@@ -16,6 +21,11 @@ public class Bot {
     private final BufferedWriter    writer;
 
 
+    /**
+     * @use Bot initialization, takes a socket as argument and throws an Exception, it will create the writer and reader, set hostname and socket, and send hostname to the server
+     * @param socket
+     * @throws Exception
+     */
     public Bot(Socket socket) throws Exception {
 
         String hostname = InetAddress.getLocalHost().getHostName();
@@ -31,6 +41,10 @@ public class Bot {
     }
 
 
+    /**
+     * @use Execute command, this function is called if the bot receives a command from the server, it takes a message as argument, and calls the `CommandManager.handleMessage` function
+     * @param message
+     */
     public void execCommand(String message) {
         String status = BotMain.commandManager.handleMessage(message, this);
 
@@ -38,6 +52,10 @@ public class Bot {
         }
     }
 
+    /**
+     * @use Sends a message to the server
+     * @param message
+     */
     public void sendMessage(String message) {
         try {
             this.writer.write(message);
@@ -69,6 +87,9 @@ public class Bot {
     }
     */
 
+    /**
+     * @use Listens for commands send to the bot
+     */
     public void listen() {
 
         new Thread(new Runnable() {
@@ -96,11 +117,20 @@ public class Bot {
     }
 
 
+    /**
+     * @use Remove Bot from `bots` list
+     */
     public void removeBot() {
         bots.remove(this);
         System.out.println("Closed Connection");
     }
 
+    /**
+     * @use Close bot socket, reader and writer
+     * @param socket
+     * @param reader
+     * @param writer
+     */
     public void close(Socket socket, BufferedReader reader, BufferedWriter writer) {
         removeBot();
         try {
@@ -112,6 +142,10 @@ public class Bot {
         }
     }
 
+    /**
+     * @use init function, it's called to create the bot and socket
+     * @throws RuntimeException
+     */
     public static void init() {
 
         try {

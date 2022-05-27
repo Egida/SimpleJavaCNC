@@ -8,10 +8,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+
+/**
+ * @author TerrificTable55
+ * @version 1.0
+ */
 public class CommandManager {
 
     public static List<Command> commands    = new ArrayList<Command>();
 
+    /**
+     * @use CommandManager initialization, it adds commands to a `public commands` list
+     */
     public CommandManager() {
 
         addCommand(new Test());
@@ -25,6 +33,13 @@ public class CommandManager {
     public static List<Command> getCommands() {
         return commands;
     }
+
+    /**
+     * @use Handle Commands, it takes a message and a bot as arguments, it will remove the `>`'s from the command and call the `command.onCommand()` function, returns a String
+     * @param message
+     * @param bot
+     * @return
+     */
     public String handleMessage(String message, Bot bot) {
         message = message.replace("> ", "");
         message = message.replace(">", "");

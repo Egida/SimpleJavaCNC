@@ -9,6 +9,11 @@ import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.util.ArrayList;
 
+
+/**
+ * @author TerrificTable55
+ * @version 1.0
+ */
 public class ClientHandler implements Runnable {
     public static ArrayList<ClientHandler> handlers = new ArrayList<>();
 
@@ -17,7 +22,10 @@ public class ClientHandler implements Runnable {
     private BufferedReader  reader;
     public BufferedWriter   writer;
 
-
+    /**
+     * @use ClientHandler initializer, defines writer and reader
+     * @param socket sets private socket variable
+     */
     public ClientHandler(Socket socket) {
         try {
 
@@ -32,6 +40,9 @@ public class ClientHandler implements Runnable {
         }
     }
 
+    /**
+     * @use Implements `run` function from Runnable interface
+     */
     @Override
     public void run() {
 
@@ -56,6 +67,11 @@ public class ClientHandler implements Runnable {
 
     }
 
+    /**
+     * @use Sends a message to the clients
+     * @param botName sends message to this bot / client
+     * @param command sends this command
+     */
     public static void send(String botName, String command) {
         for (BotHandler handler : BotHandler.handlers) {
             try {
@@ -73,6 +89,9 @@ public class ClientHandler implements Runnable {
         }
     }
 
+    /**
+     * @param command this command is sent to all clients / bots
+     */
     public void sendAll(String command) {
         for (BotHandler handler : BotHandler.handlers) {
             try {
@@ -90,11 +109,19 @@ public class ClientHandler implements Runnable {
         }
     }
 
+    /**
+     * @use removes handler from `handlers` list
+     */
     public void removeHandler() {
         handlers.remove(this);
         System.out.printf(" [ CLIENT | %s ]  Closed Connection\n", this.name);
     }
 
+    /**
+     * @param socket closes socket
+     * @param reader closes reader
+     * @param writer closes writer
+     */
     public void close(Socket socket, BufferedReader reader, BufferedWriter writer) {
         removeHandler();
         try {

@@ -6,6 +6,10 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * @author TerrificTable55
+ * @version 1.0
+ */
 public abstract class Command {
 
     public String                   name;
@@ -14,7 +18,11 @@ public abstract class Command {
     public List<String>             aliases;
 
 
-
+    /**
+     * @use One of the three ways to define a new Command, takes a new name and description
+     * @param name
+     * @param description
+     */
     public Command(String name, String description) {
         super();
         this.name = name;
@@ -23,6 +31,12 @@ public abstract class Command {
         this.aliases = Collections.singletonList(name);
     }
 
+    /**
+     * @use Second way to define a new Command, takes a new name, description and aliases
+     * @param name
+     * @param description
+     * @param aliases
+     */
     public Command(String name, String description, String[] aliases) {
         super();
         this.name = name;
@@ -31,6 +45,13 @@ public abstract class Command {
         this.aliases = Arrays.asList(aliases);
     }
 
+    /**
+     * @use Third and last way to define a new Command, takes a new name, description, syntax and aliases
+     * @param name
+     * @param description
+     * @param syntax
+     * @param aliases
+     */
     public Command(String name, String description, String syntax, String[] aliases) {
         super();
         this.name = name;
@@ -40,7 +61,12 @@ public abstract class Command {
     }
 
 
-
+    /**
+     * @use the `onCommand` function, its called when a command is sent to the bot, takes args, command and bot as arguments
+     * @param args
+     * @param command
+     * @param bot
+     */
     public abstract void onCommand(String[] args, String command, Bot bot);
     public String getDescription() {
         return description;
