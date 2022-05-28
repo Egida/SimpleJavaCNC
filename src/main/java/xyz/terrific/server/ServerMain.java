@@ -13,7 +13,7 @@ import java.io.IOException;
 public class ServerMain {
 
     /**
-     * @use Creates a new BotServer and a new ClientServer
+     * @use  Creates a new BotServer and a new ClientServer
      * @param args
      */
     public static void main(String[] args) {
