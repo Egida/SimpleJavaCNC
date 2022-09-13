@@ -38,8 +38,10 @@ class Bot(socket: Socket) {
      * @param message
      */
     fun execCommand(message: String?) {
-        val status = BotMain.commandManager!!.handleMessage(message, this)
-        if (status.startsWith("ERROR:")) {
+        val status = message?.let { BotMain.commandManager!!.handleMessage(it, this) }
+        if (status != null) {
+            if (status.startsWith("ERROR:")) {
+            }
         }
     }
 
